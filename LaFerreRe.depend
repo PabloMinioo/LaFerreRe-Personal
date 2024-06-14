@@ -1,0 +1,341 @@
+<<<<<<< HEAD
+# depslib dependency file v1.0
+1717942526 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\fecha.cpp
+	<ctime>
+	<iostream>
+	"Fecha.h"
+
+1717942526 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\fecha.h
+	<ctime>
+
+1718259153 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\aplicacion.cpp
+	<string>
+	<iostream>
+	"Aplicacion.h"
+	<cstring>
+
+1717944136 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\aplicacion.h
+	"InventarioArchivo.h"
+	"VentasArchivo.h"
+
+1718294441 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\inventarioarchivo.h
+	<string>
+	"Producto.h"
+	"Archivo.h"
+
+1718255866 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\producto.h
+	<string>
+
+1718256067 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\ventasarchivo.h
+	<string>
+	"Venta.h"
+	"Archivo.h"
+
+1717964594 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\ventas.h
+	"Fecha.h"
+
+1718302864 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\producto.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Producto.h"
+
+1717944259 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\main.cpp
+	<iostream>
+	"Aplicacion.h"
+
+1717975946 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\venta.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+
+1717964594 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\venta.h
+	"Fecha.h"
+
+1717966489 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\archivo.cpp
+	"Archivo.h"
+
+1717966454 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\archivo.h
+	<string>
+	<cstdio>
+
+1717975946 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\ventasarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"VentasArchivo.h"
+	"Archivo.h"
+
+1717969627 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\clientes.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+	"Clientes.h"
+
+1717969580 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\clientes.h
+	<string>
+
+1717975946 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventasarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"DetallesVentasArchivo.h"
+	"Archivo.h"
+
+1718302601 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\inventarioarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"InventarioArchivo.h"
+	"Producto.h"
+	"Archivo.h"
+
+1717975946 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventas.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"DetallesVentas.h"
+
+1717975662 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventas.h
+	"Venta.h"
+	"Producto.h"
+	"Clientes.h"
+
+1717975795 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventasarchivo.h
+	<string>
+	"DetallesVentas.h"
+	"Archivo.h"
+
+=======
+# depslib dependency file v1.0
+1717942526 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\fecha.cpp
+	<ctime>
+	<iostream>
+	"Fecha.h"
+
+1717942526 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\fecha.h
+	<ctime>
+
+1717945031 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\aplicacion.cpp
+	<string>
+	<iostream>
+	"Aplicacion.h"
+	<cstring>
+
+1717944136 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\aplicacion.h
+	"InventarioArchivo.h"
+	"VentasArchivo.h"
+
+1717969784 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\inventarioarchivo.h
+	<string>
+	"Producto.h"
+	"Archivo.h"
+
+1717944174 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\producto.h
+	<string>
+
+1717966622 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\ventasarchivo.h
+	<string>
+	"Venta.h"
+	"Archivo.h"
+
+1717964594 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\ventas.h
+	"Fecha.h"
+
+1717963894 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\producto.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Producto.h"
+
+1717944259 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\main.cpp
+	<iostream>
+	"Aplicacion.h"
+
+1717964734 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\venta.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+
+1717964594 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\venta.h
+	"Fecha.h"
+
+1717966489 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\archivo.cpp
+	"Archivo.h"
+
+1717966454 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\archivo.h
+	<string>
+	<cstdio>
+
+1717966764 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\ventasarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"VentasArchivo.h"
+	"Archivo.h"
+
+1717969627 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\clientes.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+	"Clientes.h"
+
+1717969580 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\clientes.h
+	<string>
+
+1717970953 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventasarchivo.cpp
+	<iostream>
+	<cstdlib>
+
+1717970011 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\inventarioarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"InventarioArchivo.h"
+	"Archivo.h"
+
+1717975766 source:d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventas.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+	"Producto.h"
+	"Clientes.h"
+	"DetallesVentas.h"
+
+1717975662 d:\cosas compu\facultad utn\laboratorio de computación\laboratorio de computación 2\ejercicios archivos\laferrere\detallesventas.h
+	"Venta.h"
+	"Producto.h"
+	"Clientes.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\aplicacion.cpp
+	<string>
+	<iostream>
+	"Aplicacion.h"
+	<cstring>
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\aplicacion.h
+	"InventarioArchivo.h"
+	"VentasArchivo.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\inventarioarchivo.h
+	<string>
+	"Producto.h"
+	"Archivo.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\producto.h
+	<string>
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\archivo.h
+	<string>
+	<cstdio>
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\ventasarchivo.h
+	<string>
+	"Venta.h"
+	"Archivo.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\venta.h
+	"Fecha.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\fecha.h
+	<ctime>
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\archivo.cpp
+	"Archivo.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\clientes.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+	"Clientes.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\clientes.h
+	<string>
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\detallesventas.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"DetallesVentas.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\detallesventas.h
+	"Venta.h"
+	"Producto.h"
+	"Clientes.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\detallesventasarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"DetallesVentasArchivo.h"
+	"Archivo.h"
+
+1718118119 c:\users\maxim\onedrive\escritorio\tpferre\detallesventasarchivo.h
+	<string>
+	"DetallesVentas.h"
+	"Archivo.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\fecha.cpp
+	<ctime>
+	<iostream>
+	"Fecha.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\inventarioarchivo.cpp
+	<iostream>
+	<string>
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"InventarioArchivo.h"
+	"Archivo.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\main.cpp
+	<iostream>
+	"Aplicacion.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\producto.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Producto.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\venta.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"Venta.h"
+
+1718118119 source:c:\users\maxim\onedrive\escritorio\tpferre\ventasarchivo.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	"VentasArchivo.h"
+	"Archivo.h"
+
+>>>>>>> refs/remotes/origin/master
