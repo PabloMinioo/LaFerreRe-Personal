@@ -17,11 +17,11 @@ public:
     void listarProductoID();
     void eliminarProducto();
     void sumarStock();
-    void restarStock();
     void modificarPrecioUnitario();
 
-    int getStockPorID(int idProducto);
+    void restarStock(int idProducto, int cantidadVenta);
     float calcularImporteVenta(int idProducto, int cantidadVenta);
+    int getStockPorID(int idProducto);
 
     // METODOS RELACIONADOS A REGISTROS
     bool guardarRegistro(Producto producto);

@@ -19,133 +19,88 @@ DetallesVentasArchivo::DetallesVentasArchivo(string fileName){
 }
 
 // METODOS
-void DetallesVentasArchivo::guardarDetalleVenta() {
+DetallesVentas DetallesVentasArchivo::guardarDetalleVenta() {
     DetallesVentas detalleVenta;
     InventarioArchivo inventario;
-
     detalleVenta = detalleVenta.cargarDetalleVenta();
-
-    cout << "*************************************ID PRODUCTO: " << detalleVenta.getIdProducto() << endl;
     // VALIDACION SI EXISTE EL NUMERO ID DEL PRODUCTO
     if (inventario.isExist(detalleVenta.getIdProducto()) == false){
         cout << "LA CARGA DE LA VENTA DEL PRODUCTO NO SE PUDO REALIZAR. ID DEL PRODUCTO NO EXISTENTE" << endl;
-        return;
+        return detalleVenta;
     }
     // VALIDACION DE CANTIDAD DE PRODUCTO VENDIDO POSIBLE
     int stockProducto = inventario.getStockPorID(detalleVenta.getIdProducto());
     if (detalleVenta.getCantidadProductoVendido() <= 0 || detalleVenta.getCantidadProductoVendido() > stockProducto){
         cout << "LA CARGA DE LA VENTA DEL PRODUCTO NO SE PUDO REALIZAR. CANTIDAD DE PRODUCTO NO VALIDO" << endl;
-        return;
+        return detalleVenta;
     }
     if (guardarRegistro(detalleVenta)) {
         cout << "LA CARGA DE LA VENTA FUE REALIZADA CON EXITO" << endl;
+        return detalleVenta;
     } else {
         cout << "LA CARGA DE LA VENTA NO SE PUDO REALIZAR" << endl;
+        return detalleVenta;
     }
 }
 
 // LISTA TODAS LAS VENTAS
-//void DetallesVentasArchivo::listar() {
-//    int cantidad = getCantidadRegistros();
-//    cout << "CANTIDAD DE REGISTROS: " << cantidad << endl;
-//    for (int i = 0; i < cantidad; i++) {
-//        cout << "Leído registro: " << i << endl;
-//        DetallesVentas detalleVenta = leerRegistro(i);
-//        cout << "ID VENTA: " << detalleVenta.getIdVenta() << " - ESTADO VENTA" << detalleVenta.getEstado() << endl;
-//        if (detalleVenta.getEstado() && detalleVenta.getIdVenta() != 0) {
-//            cout << "**************************" << endl;
-//            detalleVenta.mostrarDetalleVenta();
-//            cout << "**************************" << endl;
-//        }
-//    cout << "FIN DEL BUCLE" << endl;
-//    }
-//}
 void DetallesVentasArchivo::listar(){
-    int cantidad = getCantidadRegistros();
-    for (int i = 0; i < cantidad; i++) {
-        DetallesVentas detalleVenta = leerRegistro(i);
+    DetallesVentas detalleVenta;
+    int cantidadRegistros = getCantidadRegistros();
+    for (int i = 0; i < cantidadRegistros; i++) {
+        detalleVenta = leerRegistro(i);
         if (detalleVenta.getEstado()) {
             cout << "**************************" << endl;
-            cout << "NUMERO ID DE LA VENTA: " << detalleVenta.getIdVenta() << endl;
-            cout << "NUMERO ID DEL PRODUCTO: " << detalleVenta.getIdProducto() << endl;
-            cout << "CANTIDAD DE PRODUCTO VENDIDO: " << detalleVenta.getCantidadProductoVendido() << endl;
-            cout << "IMPORTE DE LA VENTA: " << detalleVenta.getImporteVenta() << endl;
-            cout << "ESTADO VENTA: " << (detalleVenta.getEstado() ? "DISPONIBLE" : "NO DISPONIBLE") << endl;
+            detalleVenta.mostrarDetalleVenta(detalleVenta);
             cout << "**************************" << endl;
         }
-        fseek(_pFile, (i+1) * sizeof(DetallesVentas), SEEK_SET); // Avanzar a la siguiente posición
     }
 }
 
-
-//// SE INDICA UN ID DE VENTA Y MUESTRA EL REGISTRO POR PANTALLA
-//void DetallesVentasArchivo::listarDetalleVentaID(){
-//    int index, idVenta;
-//    DetallesVentas detalleVenta;
-//    cout << "INGRESE EL ID DE LA VENTA A BUSCAR: ";
-//    cin >> idVenta;
-//    index = buscarRegistro(idVenta);
-//    if (index >= 0){
-//        cout << "**************************" << endl;
-//        detalleVenta = leerRegistro(index);
-//        detalleVenta.mostrarDetalleVenta();
-//        cout << "**************************" << endl;
-//    } else {
-//        cout << "EL ID DE LA VENTA NO EXISTE" << endl;
-//    }
-//}
-
+// SE INDICA UN ID DE VENTA Y MUESTRA EL REGISTRO POR PANTALLA
+void DetallesVentasArchivo::listarDetalleVentaID(){
+    int idVenta;
+    bool encontro;
+    DetallesVentas detalleVenta;
+    cout << "INGRESE EL ID DE LA VENTA A BUSCAR: ";
+    cin >> idVenta;
+    int cantidadRegistros = getCantidadRegistros();
+    for (int i = 0; i < cantidadRegistros; i++){
+        detalleVenta = leerRegistro(i);
+        if (detalleVenta.getIdVenta() == idVenta){
+            cout << "**************************" << endl;
+            detalleVenta.mostrarDetalleVenta(detalleVenta);
+            encontro = true;
+            cout << "**************************" << endl;
+        }
+    }
+    if (encontro == false){
+        cout << "EL ID DE LA VENTA NO EXISITE" << endl;
+    }
+}
 
 // METODOS RELACIONADO A REGRISTROS
 // RECIBE UN OBJETO TIPO DETALLESVENTAS Y LO GUARDA EN EL ARCHIVO
 bool DetallesVentasArchivo::guardarRegistro(DetallesVentas detalleVenta){
     int grabo;
     if (abrir("ab") == false) {
-        cout << "Error al abrir el archivo." << endl;
         return false;
     }
     grabo = fwrite(&detalleVenta, sizeof (DetallesVentas), 1, _pFile);
     cerrar();
-    if (grabo != 1) {
-        cout << "Error al escribir el registro." << endl;
-        return false;
-    }
-    return true;
+    return grabo;
 }
-// RECIBE UNA POSICION Y LEE EL REGISTRO DE DICHA POSICION
-//DetallesVentas DetallesVentasArchivo::leerRegistro(int index) {
-//    DetallesVentas detalleVenta;
-//    if (abrir("rb") == false) {
-//        return detalleVenta;
-//    }
-//    fseek(_pFile, index * sizeof(DetallesVentas), SEEK_SET);
-//    fread(&detalleVenta, sizeof(DetallesVentas), 1, _pFile);
-//    cerrar();
-//    cout << "Leído registro: " << detalleVenta.getIdVenta() << endl; // Verificar la lectura
-//    return detalleVenta;
-//}
 
-DetallesVentas DetallesVentasArchivo::leerRegistro(int index){
+// RECIBE UNA POSICION Y LEE EL REGISTRO DE DICHA POSICION
+DetallesVentas DetallesVentasArchivo::leerRegistro(int index) {
     DetallesVentas detalleVenta;
-    if (abrir("rb") == false){
-        cout << "Error al abrir el archivo" << endl;
+    if (abrir("rb") == false) {
         return detalleVenta;
     }
-    cout << "Posición antes de fseek: " << ftell(_pFile) << endl;
-    fseek(_pFile, index * sizeof (DetallesVentas), SEEK_SET);
-    cout << "Posición después de fseek: " << ftell(_pFile) << endl;
-    fread(&detalleVenta, sizeof (DetallesVentas), 1, _pFile);
-    cout << "Posición después de fread: " << ftell(_pFile) << endl;
+    fseek(_pFile, index * sizeof(DetallesVentas), SEEK_SET);
+    fread(&detalleVenta, sizeof(DetallesVentas), 1, _pFile);
     cerrar();
     return detalleVenta;
-}void DetallesVentasArchivo::leerRegistroXD(int index){
-    DetallesVentas detalleVenta;
-    if (abrir("rb") == false){
-        return;
-    }
-    cout << "LEI EL ARCHIVO" << endl;
-    cerrar();
-    return;
 }
 
 // RECIBE EL ID DE LA VENTA Y DEVUELVE SU POSICION
@@ -168,7 +123,6 @@ int DetallesVentasArchivo::buscarRegistro(int idVenta) {
         return -1;
     }
 }
-
 
 // DEVUELVE LA CANTIDAD DE REGISTROS DEL ARCHIVO
 int DetallesVentasArchivo::getCantidadRegistros() {

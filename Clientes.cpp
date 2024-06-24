@@ -57,7 +57,7 @@ string Clientes::getApellidoCliente() {
 }
 
 void Clientes::setDireccionCliente(string direccionCliente) {
-    if (direccionCliente.size() <= 29) {
+    if (direccionCliente.size() <= 49) {
         strcpy(_direccionCliente, direccionCliente.c_str());
     } else {
         strcpy(_direccionCliente, "SIN DATOS");
@@ -83,23 +83,32 @@ bool Clientes::getEstado() {
 
 // METODOS
 Clientes Clientes::crearCliente(){
+    // DECLARAMOS LAS VARIABLES QUE VAMOS A UTILIZAR
     int idCliente, telefonoCliente;
     string nombreCliente, apellidoCliente, direccionCliente;
 
+    // INGRESAMOS EL NUMERO ID DEL CLIENTE
     cout << "INGRESE EL ID DEL CLIENTE: ";
     cin >> idCliente;
+
+    // INGRESAMOS EL NOMBRE DEL CLIENTE
     cout << "INGRESE EL NOMBRE DEL CLIENTE: ";
     cin.ignore();
     getline(cin, nombreCliente);
+
+    // INGRESAMOS EL APELLIDO DEL CLIENTE
     cout << "INGRESE EL APELLIDO DEL CLIENTE: ";
-    cin.ignore();
     getline(cin, apellidoCliente);
+
+    // INGRESAMOS LA DIRECCION DEL CLIENTE
     cout << "INGRESE LA DIRECCION DEL CLIENTE: ";
-    cin.ignore();
     getline(cin, direccionCliente);
+
+    // INGRESAMOS EL TELEFONO DEL CLIENTE
     cout << "INGRESE EL TELEFONO DEL CLIENTE: ";
     cin >> telefonoCliente;
 
+    // DEVOLVEMOS EL OBJETO
     return Clientes(idCliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, true);
 }
 void Clientes::mostrarCliente(Clientes cliente){

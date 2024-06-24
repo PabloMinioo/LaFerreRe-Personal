@@ -66,13 +66,13 @@ Fecha Fecha::obtenerFechaActual() {
 
 bool Fecha::fechaValida(Fecha fecha){
     // VALIDAMOS LOS RANGOS DE LA FECHA
-    if (fecha.getDia() < 0 || fecha.getDia() > 31){
+    if (fecha.getDia() < 1 || fecha.getDia() > 31){
         return false;
     }
     if (fecha.getMes() < 1 || fecha.getMes() > 13){
         return false;
     }
-    if (fecha.getAnio() < 0){
+    if (fecha.getAnio() < 1950){
         return false;
     }
     // VALIDAMOS CON LA FECHA ACTUAL

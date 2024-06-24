@@ -25,13 +25,13 @@ void InventarioArchivo::guardarProducto() {
     Producto producto;
     producto = producto.crearProducto();
     // VALIDACION NUMERO DE ID POSITIVO
-    if (producto.getIdProducto() <= 0){
+    if (producto.getIdProducto() <= 0) {
         cout << endl << "EL PRODUCTO NO SE PUDO GUARDAR. ID DEL PRODUCTO NO VALIDO" << endl;
         return;
     }
     // VALIDACION NUMERO DE ID EXISTENTE
-    if (isExist(producto.getIdProducto())){
-        if (producto.getEstado() == false){
+    if (isExist(producto.getIdProducto())) {
+        if (producto.getEstado() == false) {
             cout << endl << "EL PRODUCTO NO SE PUDO GUARDAR. ID DEL PRODUCTO EXISTENTE PERO DADO DE BAJA" << endl;
             return;
         } else {
@@ -40,17 +40,17 @@ void InventarioArchivo::guardarProducto() {
         }
     }
     // VALIDACION TIPO DE PRODUCTO
-    if (producto.getTipoProducto() < 1 || producto.getTipoProducto() > 10){
+    if (producto.getTipoProducto() < 1 || producto.getTipoProducto() > 10) {
         cout << endl << "EL PRODUCTO NO SE PUDO GUARDAR. TIPO DE PRODUCTO NO VALIDO" << endl;
         return;
     }
     // VALIDACION STOCK
-    if (producto.getStock() < 0){
+    if (producto.getStock() < 0) {
         cout << endl << "EL PRODUCTO NO SE PUDO GUARDAR. CANTIDAD DE STOCK NO VALIDO" << endl;
         return;
     }
     // VALIDACION PRECIO UNITARIO
-    if (producto.getPrecioUnitario() < 0){
+    if (producto.getPrecioUnitario() < 0) {
         cout << endl << "EL PRODUCTO NO SE PUDO GUARDAR. PRECIO UNITARIO NO VALIDO" << endl;
         return;
     }
@@ -101,7 +101,7 @@ void InventarioArchivo::eliminarProducto() {
         cout << endl << "DESEA ELIMINAR EL PRODUCTO ELEGIDO? (1- SI || 0-NO): ";
         cin >> eliminarProducto;
         if (eliminarProducto) {
-            if (eliminarRegistro(idProducto)){
+            if (eliminarRegistro(idProducto)) {
                 cout << endl << "EL PRODUCTO SE ELIMINO CORRECTAMENTE" << endl;
             } else {
                 cout << endl << "NO SE PUDO ELIMINAR EL PRODUCTO" << endl;
@@ -113,24 +113,53 @@ void InventarioArchivo::eliminarProducto() {
         cout << endl << "EL NUMERO ID INGRESADO NO EXISTE" << endl;
     }
 }
-//    void sumarStock();
-//    void restarStock();
+// SE INDICA UN NUMERO ID DE PRODCUTO Y SE LE AGREGA STOCK
+void InventarioArchivo::sumarStock(){
+    Producto producto;
+    int idProducto, index, cantidadStock, nuevoStock = 0;
+    cout << "INGRESE EL ID DEL PRODUCTO QUE DESEA MODIFICAR: ";
+    cin >> idProducto;
+    index = buscarRegistro(idProducto);
+    if (index != -1){
+        producto = leerRegistro(index);
+        cout << "------------------------------------------" << endl;
+        cout << "CANTIDAD DE STOCK ANTIGUA: " << producto.getStock() << endl;
+        cout << "------------------------------------------" << endl;
+        cout << "INGRESE LA CANTIDAD DE STOCK QUE DESEA AGREGAR: ";
+        cin >> cantidadStock;
+        if (cantidadStock > 0){
+            nuevoStock += producto.getStock() + cantidadStock;
+            producto.setStock(nuevoStock);
+            cout << "------------------------------------------" << endl;
+            cout << "LA CANTIDAD DE STOCK SE MODIFICO CON EXITO" << endl;
+            modificarRegistro(index, producto);
+            producto.mostrarProducto(producto);
+        } else {
+            cout << endl << "NO SE MODIFICO LA CANTIDAD DE STOCK. VALOR NO VALIDO" << endl;
+        }
+    } else {
+        cout << endl << "EL NUMERO ID INGRESADO NO EXISTE " << endl;
+    }
+}
 // MODIFICA EL PRECIO UNITARIO DEL PRODUCTO
 void InventarioArchivo::modificarPrecioUnitario() {
     Producto producto;
     int idProducto, index;
     float nuevoPrecioUnitario;
-    cout << "INGRESE EL ID DEL PRODUCTO QUE DESEA MODIFICAR: " << endl;
+    cout << "INGRESE EL ID DEL PRODUCTO QUE DESEA MODIFICAR: ";
     cin >> idProducto;
     index = buscarRegistro(idProducto);
     if (index != 1) {
         producto = leerRegistro(index);
+        cout << "------------------------------------------" << endl;
         cout << "PRECIO UNITARIO ANTIGUO: " << producto.getPrecioUnitario() << endl;
+        cout << "------------------------------------------" << endl;
         cout << endl << "INGRESE EL NUEVO PRECIO UNITARIO: ";
         cin >> nuevoPrecioUnitario;
         producto.setPrecioUnitario(nuevoPrecioUnitario);
         if (nuevoPrecioUnitario > 0) {
-            cout << endl << "EL PRECIO UNITARIO SE MODIFICO CON EXITO" << endl;
+            cout << "------------------------------------------" << endl;
+            cout << "EL PRECIO UNITARIO SE MODIFICO CON EXITO" << endl;
             modificarRegistro(index, producto);
             producto.mostrarProducto(producto);
         } else {
@@ -140,46 +169,46 @@ void InventarioArchivo::modificarPrecioUnitario() {
         cout << endl << "EL NUMERO ID INGRESADO NO EXISTE " << endl;
     }
 }
-// RECIBE UN NUMERO ID DE PRODUCTO Y LA CANTIDAD DE PRODUCTO A VENDER Y CALCULA EL IMPORTE DE LA VENTA
-//float InventarioArchivo::calcularImporteVenta(int idProducto, int cantidadVenta){
-//    Producto producto;
-//    int index = buscarRegistro(idProducto);
-//    float importeTotal = 0;
-//    if (index != 1){
-//        producto = leerRegistro(index);
-//        cout << "ID Producto: " << idProducto << endl;
-//        cout << "Estado del producto: " << (producto.getEstado() ? "true" : "false") << endl;
-//        cout << "Precio unitario: " << producto.getPrecioUnitario() << endl;
-//        if (producto.getEstado() == false){
-//            cout << "PRODUCTO NO DISPONIBLE VENTA" << endl;
-//            return -1;
-//        } else {
-//            importeTotal = producto.getPrecioUnitario() * cantidadVenta;
-//        }
-//    } else {
-//        cout << "PRODUCTO NO ENCONTRADO EN EL INVENTARIO" << endl;
-//    }
-//
-//    return importeTotal;
-//}
-float InventarioArchivo::calcularImporteVenta(int idProducto, int cantidadProductoVendido) {
-    Producto producto = leerRegistroPorID(idProducto);
-    if (!producto.getEstado() || cantidadProductoVendido <= 0 || cantidadProductoVendido > producto.getStock()) {
-        cout << "PRODUCTO NO DISPONIBLE O CANTIDAD NO VALIDA" << endl;
-        return 0.0;
+// RECIBE POR PARAMETRO EL NUMERO ID DE PRODUCTO Y LA CANTIDAD DE PRODUCTO VENDIDO. RESTA EL STOCK DEL PRODUCTO
+void InventarioArchivo::restarStock(int idProducto, int cantidadVenta){
+    Producto producto;
+    int index = buscarRegistro(idProducto);
+    int stockNuevo;
+    if (index != -1){
+        producto = leerRegistro(index);
+        stockNuevo = producto.getStock() - cantidadVenta;
+        producto.setStock(stockNuevo);
+        modificarRegistro(index, producto);
     }
-    return cantidadProductoVendido * producto.getPrecioUnitario();
+}
+// RECIBE UN NUMERO ID DE PRODUCTO Y LA CANTIDAD DE PRODUCTO A VENDER. CALCULA EL IMPORTE DE LA VENTA
+float InventarioArchivo::calcularImporteVenta(int idProducto, int cantidadVenta) {
+    Producto producto;
+    int index = buscarRegistro(idProducto);
+    float importeTotal = 0;
+    if (index != -1) {
+        producto = leerRegistro(index);
+        if (producto.getEstado() == false) {
+            cout << "PRODUCTO NO DISPONIBLE" << endl;
+            return -1;
+        } else {
+            importeTotal = producto.getPrecioUnitario() * cantidadVenta;
+        }
+    }
+    return importeTotal;
 }
 // RECIBE UN NUMERO ID DE PRODUCTO Y DEVUELVE LA CANTIDAD DE STOCK
-int InventarioArchivo::getStockPorID(int idProducto){
+int InventarioArchivo::getStockPorID(int idProducto) {
     Producto producto;
-    producto = leerRegistroPorID(idProducto);
-    if (producto.getEstado() == false){
-        cout << "PRODUCTO NO DISPONIBLE. ESTADO FALSE (ID: " << idProducto << ")" << endl;
-        return -1;
+    int index = buscarRegistro(idProducto);
+    if (index != -1) {
+        producto = leerRegistro(index);
+        if (producto.getEstado() == false) {
+            cout << "PRODUCTO NO DISPONIBLE" << endl;
+            return -1;
+        }
+        return producto.getStock();
     }
-    cout << "STOCK PRODUCTO: "<< producto.getStock() << endl;
-    return producto.getStock();
 }
 
 /// METODOS RELACIONADOS A REGISTROS
@@ -210,62 +239,30 @@ Producto InventarioArchivo::leerRegistro(int index) {
     if (abrir("rb") == false) {
         return producto;
     }
-    cout << "Posición antes de fseek: " << ftell(_pFile) << endl;
     fseek(_pFile, index * sizeof(Producto), SEEK_SET);
-    cout << "Posición Despues de fseek: " << ftell(_pFile) << endl;
     fread(&producto, sizeof(Producto), 1, _pFile);
-    cout << "Posición Despues de fread: " << ftell(_pFile) << endl;
     cerrar();
     return producto;
 }
-// RECIBE EL ID DEL PRODUCTO Y LEE EL REGISTRO DE DICHO ID
-Producto InventarioArchivo::leerRegistroPorID(int idProducto){
-    Producto producto;
-    int index = buscarRegistro(idProducto);
-    if (index == -1){
-        producto.setEstado(false);
-        cout << "Producto no encontrado. ID: " << idProducto << endl;  // Mensaje de depuración
-        return producto;
-    }
-    producto = leerRegistro(index);
-    cout << "Producto encontrado. ID: " << idProducto << ", Index: " << index << endl;  // Mensaje de depuración
-    return producto;
-}
 // RECIBE EL ID DEL PRODUCTO Y DEVUELVE SU POSICION EN EL ARCHIVO
-//int InventarioArchivo::buscarRegistro(int idProducto) {
-//    int index = 0;
-//    Producto producto;
-//    if (abrir("rb+") == false) {
-//        return -1;
-//    }
-//    while (fread(&producto, sizeof(Producto), 1, _pFile)) {
-//        if (producto.getIdProducto() == idProducto) {
-//            break;
-//        }
-//        index++;
-//    }
-//    cerrar();
-//    if(producto.getIdProducto() == idProducto) {
-//        return index;
-//    } else {
-//        return -1;
-//    }
-//}
 int InventarioArchivo::buscarRegistro(int idProducto) {
     int index = 0;
     Producto producto;
-    if (abrir("rb") == false) {
+    if (abrir("rb+") == false) {
         return -1;
     }
     while (fread(&producto, sizeof(Producto), 1, _pFile)) {
         if (producto.getIdProducto() == idProducto) {
-            cerrar();
-            return index;
+            break;
         }
         index++;
     }
     cerrar();
-    return -1;
+    if(producto.getIdProducto() == idProducto) {
+        return index;
+    } else {
+        return -1;
+    }
 }
 // DEVUELVE LA CANTIDAD DE REGISTROS DEL ARCHIVO
 int InventarioArchivo::getCantidadRegistros() {
@@ -297,13 +294,10 @@ bool InventarioArchivo::modificarRegistro(int index, Producto producto) {
     cerrar();
     return modifico;
 }
-
 // RECIBE EL ID DEL PRODUCTO Y VERIFICA SI EXISTE
 bool InventarioArchivo::isExist(int idProducto) {
-    cout << "Verificando existencia del producto con ID: " << idProducto << endl;
     return buscarRegistro(idProducto) != -1;
 }
-
 // MENU DEL INVENTARIO DE LA FERRETERIA
 void InventarioArchivo::menu() {
     int opcion;
@@ -342,6 +336,10 @@ void InventarioArchivo::menu() {
         case 5:
             system("cls");
             modificarPrecioUnitario();
+            break;
+        case 6:
+            system("cls");
+            sumarStock();
             break;
         case 0:
             return;

@@ -12,7 +12,7 @@ public:
     ClientesArchivo(std::string fileName);
 
     // METODOS
-    void guardarCliente();
+    Clientes guardarCliente();
     void listarCliente();
     void listarClienteID();
     void eliminarCliente();

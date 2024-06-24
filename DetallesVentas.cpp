@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include "DetallesVentas.h"
+#include "VentasArchivo.h"
 
 
 using namespace std;
@@ -62,19 +63,32 @@ bool DetallesVentas::getEstado(){
 
 // METODOS
 DetallesVentas DetallesVentas::cargarDetalleVenta(){
+    // DECLARAMOS LAS VARIABLES
     int idVenta, idProducto, cantidadProductoVendido;
     float importeVenta = 0.0;
-    InventarioArchivo inventario;
 
+    // USAMOS LOS OBJETOS 'InventarioArchivo' y 'VentasArchivo'
+    InventarioArchivo inventario;
+    VentasArchivo ventaArchivo;
+
+    // NUMERO ID DE VENTA AUTONUMERICO
     idVenta = ventaArchivo.getCantidadRegistros() + 1;
     cout << "NUMERO ID DE LA VENTA: " << idVenta << endl;
+
+    // INGRESAMOS EL NUMERO ID DEL PRODUCTO
     cout << "INGRESE EL ID DEL PRODUCTO: ";
     cin >> idProducto;
+
+    // INGRESAMOS LA CANTIDAD DE PRODUCTO A VENDER
     cout << "INGRESE LA CANTIDAD DE PRODUCTO VENDIDO: ";
     cin >> cantidadProductoVendido;
-    importeVenta = inventario.calcularImporteVenta(idProducto, cantidadProductoVendido);
+    inventario.restarStock(idProducto, cantidadProductoVendido);
+
+    // LLAMAMOS A LA FUNCION 'calcularImporteVenta' PARA CALCULAR EL IMPORTE DE LA VENTA
+    importeVenta += inventario.calcularImporteVenta(idProducto, cantidadProductoVendido);
     cout << "IMPORTE DE LA VENTA: " << importeVenta << endl;
 
+    // DEVOLVEMOS EL OBJETO
     return DetallesVentas(idVenta, idProducto, cantidadProductoVendido, importeVenta, true);
 }
 void DetallesVentas::mostrarDetalleVenta(DetallesVentas detalleVenta){

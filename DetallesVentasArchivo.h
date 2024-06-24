@@ -11,14 +11,13 @@ public:
     DetallesVentasArchivo(std::string fileName);
 
     // METODOS
-    void guardarDetalleVenta();
+    DetallesVentas guardarDetalleVenta();
     void listar();
     void listarDetalleVentaID();
 
     // METODOS RELACIONADO A REGRISTROS
     bool guardarRegistro(DetallesVentas detalleVenta);
     DetallesVentas leerRegistro(int index);
-    void leerRegistroXD(int index);
     int buscarRegistro(int idVenta);
     int getCantidadRegistros();
 };

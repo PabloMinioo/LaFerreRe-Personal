@@ -8,6 +8,7 @@ private:
     VentasArchivo ventasArchivo;
     InventarioArchivo inventarioArchivo;
     DetallesVentasArchivo detalleVentas;
+    ClientesArchivo cliente;
 public:
     void menu();
 };

@@ -19,12 +19,12 @@ VentasArchivo::VentasArchivo(string fileName) {
     _fileName = fileName;
 }
 
-// METODOS
+/// METODOS
 // CARGA UNA VENTA Y LO GUARDA EN EL ARCHIVO
 void VentasArchivo::guardarVenta() {
     Venta venta;
-
     venta = venta.cargarVenta();
+
     // VALIDACION TIPO DE VENTA
     if (venta.getTipoVenta() < 1 || venta.getTipoVenta() > 2){
         cout << "LA VENTA NO SE PUDO REALIZAR. TIPO DE VENTA NO VALIDO" << endl;
@@ -35,7 +35,7 @@ void VentasArchivo::guardarVenta() {
         cout << "LA VENTA NO SE PUDO REALIZAR. FORMA DE PAGO NO VALIDO" << endl;
         return;
     }
-    // VALIDACION ID DEL CLIENTE
+    // VALIDACION ID DEL CLIENTE EXISTENTE
     if (clienteArchivo.isExist(venta.getIdCliente()) == false){
         cout << "LA VENTA NO SE PUDO REALIZAR. NUMERO ID DEL CLIENTE NO VALIDO" << endl;
         return;
@@ -109,7 +109,10 @@ void VentasArchivo::modificarFechaVenta(){
     index = buscarRegistro(idVenta);
     if (index >= 0){
         venta = leerRegistro(index);
-//        cout << "FECHA DE VENTA ANTIGUA: " << fecha.mostrarFecha() << endl;
+        cout << "------------------------------------------" << endl;
+        cout << "FECHA DE VENTA ANTIGUA: ";
+        venta.getFechaVenta().mostrarFecha();
+        cout << "------------------------------------------" << endl;
         cout << "*INGRESE LA NUEVA FECHA DE VENTA*" << endl;
         cout << "DIA: ";
         cin >> dia;
@@ -120,8 +123,11 @@ void VentasArchivo::modificarFechaVenta(){
         Fecha nuevaFechaVenta(dia, mes, anio);
         venta.setFechaVenta(nuevaFechaVenta);
         if (nuevaFechaVenta.fechaValida(venta.getFechaVenta())){
+            cout << "------------------------------------------" << endl;
+            cout << "FECHA MODIFICADA CON EXITO" << endl;
             modificarRegistro(index, venta);
             venta.mostrarVenta(venta);
+            cout << endl;
         } else {
             cout << "NO SE MODIFICO LA FECHA. FECHA DE VENTA NO VALIDA" << endl;
         }
@@ -130,7 +136,7 @@ void VentasArchivo::modificarFechaVenta(){
     }
 }
 
-// METODOS RELACIONADOS A REGISTROS
+/// METODOS RELACIONADOS A REGISTROS
 // RECIBE UN OBJETO TIPO VENTA Y LO GUARDA EN EL ARCHIVO
 bool VentasArchivo::guardarRegistro(Venta venta) {
     int grabo;
@@ -214,7 +220,7 @@ bool VentasArchivo::modificarRegistro(int index, Venta venta){
     return modifico;
 }
 
-// MENU DE VENTAS DE LA FERRETERIA
+/// MENU DE VENTAS DE LA FERRETERIA
 void VentasArchivo::menu() {
     DetallesVentasArchivo detalleVentaArchivo;
     int opcion, opcionListarVenta;
@@ -246,12 +252,15 @@ void VentasArchivo::menu() {
         case 3:
             system("cls");
             listarVentas();
-            cout << "INGRESE '1' PARA VER LOS DETALLES DE UNA VENTA O '0' PASA SALIR: ";
+            cout << "------------------------------------------" << endl;
+            cout << "DESEA VER LOS DETALLES DE LAS VENTAS? (1- SI || 2- NO): ";
             cin >> opcionListarVenta;
-            if (opcionListarVenta == 0){
+            cout << "------------------------------------------" << endl;
+            if (opcionListarVenta == 2){
                 break;
             } else {
-//                detalleVentaArchivo.listarDetalleVentaID();
+                system("cls");
+                detalleVentaArchivo.listarDetalleVentaID();
             }
             break;
         case 4:

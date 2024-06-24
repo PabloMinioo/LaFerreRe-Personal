@@ -13,12 +13,6 @@ private:
     float _importeVenta;
     bool _estado;
 
-    // OBJETOS
-    Venta venta;
-    VentasArchivo ventaArchivo;
-    Producto producto;
-    InventarioArchivo inventario;
-
 public:
     // CONSTRUCTOR POR DEFECTO
     DetallesVentas();

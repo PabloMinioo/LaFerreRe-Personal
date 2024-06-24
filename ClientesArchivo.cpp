@@ -20,17 +20,20 @@ ClientesArchivo::ClientesArchivo(string fileName) {
 
 /// METODOS
 // CARGAMOS UN CLIENTE Y LO GUARDA EN EL ARCHIVO
-void ClientesArchivo::guardarCliente() {
+Clientes ClientesArchivo::guardarCliente() {
     Clientes cliente;
     cliente = cliente.crearCliente();
+    // VALIDACION DEL ID DE CLIENTE POSITIVO
     if (cliente.getIdCliente() <= 0){
         cout << endl << "EL CLIENTE NO SE PUDO REGISTRAR. NUMERO DE ID DEL CLIENTE NO VALIDO" << endl;
-        return;
+        return cliente;
     }
     if (guardarRegistro(cliente)) {
         cout << endl << "EL CLIENTE FUE REGISTRADO CON EXITO" << endl;
+        return cliente;
     } else {
         cout << endl << "EL CLIENTE NO SE PUDO REGISTRAR" << endl;
+        return cliente;
     }
 }
 // LISTA TODOS LOS CLIENTE QUE TENGAN 'ESTADO DISPONIBLE'
@@ -115,11 +118,8 @@ Clientes ClientesArchivo::leerRegistro(int index) {
     if (abrir("rb") == false) {
         return cliente;
     }
-    cout << "Posición antes de fseek: " << ftell(_pFile) << endl;
     fseek(_pFile, index * sizeof(Clientes), SEEK_SET);
-    cout << "Posición antes de fseek: " << ftell(_pFile) << endl;
     fread(&cliente, sizeof(Clientes), 1, _pFile);
-    cout << "Posición antes de fseek: " << ftell(_pFile) << endl;
     cerrar();
     return cliente;
 }

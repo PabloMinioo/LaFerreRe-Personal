@@ -32,7 +32,8 @@ void Aplicacion::menu() {
             break;
         case 3:
             system("cls");
-            detalleVentas.listar();
+//            detalleVentas.listar();
+            cliente.listarClienteID();
             break;
         case 0:
             system("cls");
