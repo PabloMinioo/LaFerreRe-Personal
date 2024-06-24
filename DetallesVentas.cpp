@@ -4,25 +4,24 @@
 #include <cstring>
 #include "DetallesVentas.h"
 
+
 using namespace std;
 
 /// DESARROLLO DE LOS METODOS DE LA CLASE 'DetallesVentas'
 // CONSTRUCTOR POR DEFECTO
 DetallesVentas::DetallesVentas() {
     _idVenta = 0;
-    _idCliente = 0;
     _idProducto = 0;
     _cantidadProductoVendido = 0;
-    _precioUnitario = 0;
+    _importeVenta = 0;
     _estado = false;
 }
 // CONSTRUCTOR POR PARAMETROS
-DetallesVentas::DetallesVentas(int idVenta, int idCliente, int idProducto, int cantidadProductoVendido, float precioUnitario, bool estado) {
+DetallesVentas::DetallesVentas(int idVenta, int idProducto, int cantidadProductoVendido, float importeVenta, bool estado) {
     setIdVenta(idVenta);
-    setIdCliente(idCliente);
     setIdProducto(idProducto);
     setCantidadProductoVendido(cantidadProductoVendido);
-    setPrecioUnitario(precioUnitario);
+    setImporteVenta(importeVenta);
     setEstado(estado);
 }
 // SET Y GET
@@ -31,13 +30,6 @@ void DetallesVentas::setIdVenta(int idVenta){
 }
 int DetallesVentas::getIdVenta(){
     return _idVenta;
-}
-
-void DetallesVentas::setIdCliente(int idcliente){
-    _idCliente = idcliente;
-}
-int DetallesVentas::getIdCliente(){
-    return _idCliente;
 }
 
 void DetallesVentas::setIdProducto(int idProducto){
@@ -54,11 +46,11 @@ int DetallesVentas::getCantidadProductoVendido(){
     return _cantidadProductoVendido;
 }
 
-void DetallesVentas::setPrecioUnitario(float precioUnitario){
-    _precioUnitario = precioUnitario;
+void DetallesVentas::setImporteVenta(float importeVenta){
+    _importeVenta = importeVenta;
 }
-float DetallesVentas::getPrecioUnitario(){
-    return _precioUnitario;
+float DetallesVentas::getImporteVenta(){
+    return _importeVenta;
 }
 
 void DetallesVentas::setEstado(bool estado){
@@ -69,15 +61,28 @@ bool DetallesVentas::getEstado(){
 }
 
 // METODOS
-//DetallesVentas DetallesVentas::cargarDetalleVenta(){
-//    Venta venta;
-//    Producto producto;
-//    int idCliente, cantidadProductoVendido;
-//    float precioUnitario;
-//
-//    cout << "NUMERO ID DE LA VENTA: " << venta.getIdVenta() << endl;
-//    cout << "INGRESE EL NUMERO ID DE CLIENTE: "
-//}
-//void mostrarDetalleVenta(DetallesVentas detalleVenta);
-//
+DetallesVentas DetallesVentas::cargarDetalleVenta(){
+    int idVenta, idProducto, cantidadProductoVendido;
+    float importeVenta = 0.0;
+    InventarioArchivo inventario;
+
+    idVenta = ventaArchivo.getCantidadRegistros() + 1;
+    cout << "NUMERO ID DE LA VENTA: " << idVenta << endl;
+    cout << "INGRESE EL ID DEL PRODUCTO: ";
+    cin >> idProducto;
+    cout << "INGRESE LA CANTIDAD DE PRODUCTO VENDIDO: ";
+    cin >> cantidadProductoVendido;
+    importeVenta = inventario.calcularImporteVenta(idProducto, cantidadProductoVendido);
+    cout << "IMPORTE DE LA VENTA: " << importeVenta << endl;
+
+    return DetallesVentas(idVenta, idProducto, cantidadProductoVendido, importeVenta, true);
+}
+void DetallesVentas::mostrarDetalleVenta(DetallesVentas detalleVenta){
+    cout << "NUMERO ID DE LA VENTA: " << detalleVenta.getIdVenta() << endl;
+    cout << "NUMERO ID DEL PRODUCTO: " << detalleVenta.getIdProducto() << endl;
+    cout << "CANTIDAD DE PRODUCTO VENDIDO: " << detalleVenta.getCantidadProductoVendido() << endl;
+    cout << "IMPORTE DE LA VENTA: " << detalleVenta.getImporteVenta() << endl;
+    cout << "ESTADO VENTA: " << (detalleVenta.getEstado() ? "DISPONIBLE" : "NO DISPONIBLE") << endl;
+}
+
 

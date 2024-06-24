@@ -20,10 +20,14 @@ public:
     void restarStock();
     void modificarPrecioUnitario();
 
+    int getStockPorID(int idProducto);
+    float calcularImporteVenta(int idProducto, int cantidadVenta);
+
     // METODOS RELACIONADOS A REGISTROS
     bool guardarRegistro(Producto producto);
     bool guardarRegistroModificado(int index, Producto producto);
     Producto leerRegistro(int index);
+    Producto leerRegistroPorID(int idProducto);
     int buscarRegistro(int idProducto);
     int getCantidadRegistros();
     bool eliminarRegistro(int idProducto);

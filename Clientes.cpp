@@ -108,6 +108,6 @@ void Clientes::mostrarCliente(Clientes cliente){
     cout << "APELLIDO DEL CLIENTE: " << cliente.getApellidoCliente() << endl;
     cout << "DIRECCION DEL CLIENTE: " << cliente.getDireccionCliente() << endl;
     cout << "TELEFONO DEL CLIENTE: " << cliente.getTelefonoCliente() << endl;
-    cout << "CLIENTE: " << (cliente.getEstado() ? "ACTIVO" : "NO ACTIVO") << endl;
+    cout << "ESTADO CLIENTE: " << (cliente.getEstado() ? "ACTIVO" : "NO ACTIVO") << endl;
 }
 

@@ -6,15 +6,16 @@ private:
     // PROPIEDADES
     int _idVenta;
     int _tipoVenta;
-    float _precioTotal;
-    Fecha _fechaVenta;
     int _formaPago;
+    float _precioTotal;
+    int _idCliente;
+    Fecha _fechaVenta;
     bool _estado;
 public:
     // CONSTRUCTOR POR DEFECTO
     Venta();
     // CONSTRUCTOR POR PARAMTETROS
-    Venta(int idVenta, int tipoVenta, float precioTotal, Fecha fechaVenta, int formaPago, bool estado);
+    Venta(int idVenta, int tipoVenta, int formaPago, float precioTotal, int idCliente, Fecha fechaVenta,bool estado);
 
     // SET Y GET
     void setIdVenta(int idVenta);
@@ -23,14 +24,17 @@ public:
     void setTipoVenta(int tipoVenta);
     int getTipoVenta();
 
+    void setFormaPago(int formaPago);
+    int getFormaPago();
+
     void setPrecioTotal(float precioTotal);
     float getPrecioTotal();
 
+    void setIdCliente(int idcliente);
+    int getIdCliente();
+
     void setFechaVenta(Fecha fechaVenta);
     Fecha getFechaVenta();
-
-    void setFormaPago(int formaPago);
-    int getFormaPago();
 
     void setEstado(bool estado);
     bool getEstado();

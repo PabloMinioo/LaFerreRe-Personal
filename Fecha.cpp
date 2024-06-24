@@ -41,11 +41,11 @@ int Fecha::getAnio() {
 
 // CARGA LA FECHA
 void Fecha::cargarFecha() {
-    cout <<"INGRESE DIA DE CREACION: ";
+    cout <<"INGRESE DIA: ";
     cin >> _dia;
-    cout << "INGRESE MES DE CREACION: ";
+    cout << "INGRESE MES: ";
     cin >> _mes;
-    cout << "INGRESE EL ANIO DE CREACION: ";
+    cout << "INGRESE ANIO: ";
     cin >> _anio;
 }
 

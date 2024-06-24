@@ -2,11 +2,13 @@
 #include <string>
 #include "Venta.h"
 #include "Archivo.h"
+#include "Clientes.h"
+#include "ClientesArchivo.h"
 
 class VentasArchivo: public Archivo{
 private:
-    // PROPIEDAES
-    Venta venta;
+    Clientes cliente;
+    ClientesArchivo clienteArchivo;
 public:
     // CONSTRUCTOR POR DEFECTO
     VentasArchivo();
@@ -14,14 +16,15 @@ public:
     VentasArchivo(std::string fileName);
 
     // METODOS
+    void guardarVenta();
     void listarVentas();
     void listarVentasID();
-    void buscarVenta();
-    void modificarVenta();
+    void eliminarVenta();
+    void modificarFechaVenta();
 
     // METODOS RELACIONADOS A REGISTROS
     bool guardarRegistro(Venta venta);
-    bool GuardarRegistroModificado(int index, Venta venta);
+    bool guardarRegistroModificado(int index, Venta venta);
     Venta leerRegistro(int index);
     int buscarRegistro(int idVenta);
     int getCantidadRegistros();

@@ -1,29 +1,33 @@
 #pragma once
 #include "Venta.h"
+#include "VentasArchivo.h"
 #include "Producto.h"
-#include "Clientes.h"
+#include "InventarioArchivo.h"
 
 class DetallesVentas{
 private:
     // PROPIEDADES
     int _idVenta;
-    int _idCliente;
     int _idProducto;
     int _cantidadProductoVendido;
-    float _precioUnitario;
+    float _importeVenta;
     bool _estado;
+
+    // OBJETOS
+    Venta venta;
+    VentasArchivo ventaArchivo;
+    Producto producto;
+    InventarioArchivo inventario;
+
 public:
     // CONSTRUCTOR POR DEFECTO
     DetallesVentas();
     // CONSTRUCTOR POR PARAMETROS
-    DetallesVentas(int idVenta, int idCliente, int idProducto, int cantidadProductoVendido, float precioUnitario, bool estado);
+    DetallesVentas(int idVenta, int idProducto, int cantidadProductoVendido, float importeVenta, bool estado);
 
     // SET Y GET
     void setIdVenta(int idVenta);
     int getIdVenta();
-
-    void setIdCliente(int idcliente);
-    int getIdCliente();
 
     void setIdProducto(int idProducto);
     int getIdProducto();
@@ -31,8 +35,8 @@ public:
     void setCantidadProductoVendido(int cantidadProductoVendido);
     int getCantidadProductoVendido();
 
-    void setPrecioUnitario(float precioUnitario);
-    float getPrecioUnitario();
+    void setImporteVenta(float importeVenta);
+    float getImporteVenta();
 
     void setEstado(bool estado);
     bool getEstado();
@@ -40,5 +44,4 @@ public:
     // METODOS
     DetallesVentas cargarDetalleVenta();
     void mostrarDetalleVenta(DetallesVentas detalleVenta);
-
 };

@@ -24,13 +24,15 @@ void Aplicacion::menu() {
         switch(opcion) {
         case 1:
             system("cls");
-            cout << "MENU VENTAS" << endl;
-            // llamar menu ventas
+            ventasArchivo.menu();
             break;
         case 2:
             system("cls");
-            cout << "MENU INVENTARIO" << endl;
             inventarioArchivo.menu();
+            break;
+        case 3:
+            system("cls");
+            detalleVentas.listar();
             break;
         case 0:
             system("cls");
