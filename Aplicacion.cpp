@@ -1,10 +1,9 @@
 #include <string>
 #include <iostream>
 #include "Aplicacion.h"
+#include <cstring>
 
 using namespace std;
-
-#include <cstring>
 
 /// MENU PRINCIPAL
 void Aplicacion::menu() {
@@ -20,7 +19,6 @@ void Aplicacion::menu() {
         cout << "-------------------------------" << endl;
         cout << "INGRESE LA OPCION: ";
         cin >> opcion;
-
         switch(opcion) {
         case 1:
             system("cls");
@@ -30,11 +28,14 @@ void Aplicacion::menu() {
             system("cls");
             inventarioArchivo.menu();
             break;
+<<<<<<< HEAD
+=======
         case 3:
             system("cls");
 //            detalleVentas.listar();
             cliente.listarClienteID();
             break;
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
         case 0:
             system("cls");
             cout << "GRACIAS POR USAR LA APLICACION" << endl;

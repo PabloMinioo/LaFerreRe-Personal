@@ -27,23 +27,23 @@ void VentasArchivo::guardarVenta() {
 
     // VALIDACION TIPO DE VENTA
     if (venta.getTipoVenta() < 1 || venta.getTipoVenta() > 2){
-        cout << "LA VENTA NO SE PUDO REALIZAR. TIPO DE VENTA NO VALIDO" << endl;
+        cout << endl << "LA VENTA NO SE PUDO REALIZAR. TIPO DE VENTA NO VALIDO" << endl;
         return;
     }
     // VALIDACION FORMA DE PAGO
     if (venta.getFormaPago() < 1 || venta.getFormaPago() > 3){
-        cout << "LA VENTA NO SE PUDO REALIZAR. FORMA DE PAGO NO VALIDO" << endl;
+        cout << endl << "LA VENTA NO SE PUDO REALIZAR. FORMA DE PAGO NO VALIDO" << endl;
         return;
     }
     // VALIDACION ID DEL CLIENTE EXISTENTE
     if (clienteArchivo.isExist(venta.getIdCliente()) == false){
-        cout << "LA VENTA NO SE PUDO REALIZAR. NUMERO ID DEL CLIENTE NO VALIDO" << endl;
+        cout << endl << "LA VENTA NO SE PUDO REALIZAR. NUMERO ID DEL CLIENTE NO VALIDO" << endl;
         return;
     }
     if (guardarRegistro(venta)) {
-        cout << "LA VENTA FUE REALIZADA CON EXITO" << endl;
+        cout << endl << "LA VENTA FUE REALIZADA CON EXITO" << endl;
     } else {
-        cout << "LA VENTA NO SE PUDO REALIZAR" << endl;
+        cout << endl << "LA VENTA NO SE PUDO REALIZAR" << endl;
     }
 }
 // LISTA TODAS LAS VENTAS
@@ -228,8 +228,8 @@ void VentasArchivo::menu() {
         system("cls");
         cout << "--------- MENU VENTAS -------" << endl;
         cout << "-------------------------------" << endl;
-        cout << "1- CARGAR CLIENTE " << endl;
-        cout << "2- CARGAR VENTA " << endl;
+        cout << "1- CARGAR VENTA " << endl;
+        cout << "2- CARGAR CLIENTE " << endl;
         cout << "3- LISTAR VENTAS " << endl;
         cout << "4- LISTAR VENTAS POR ID " << endl;
         cout << "5- LISTAR CLIENTES " << endl;
@@ -243,11 +243,11 @@ void VentasArchivo::menu() {
         switch(opcion) {
         case 1:
             system("cls");
-            clienteArchivo.guardarCliente();
+            guardarVenta();
             break;
         case 2:
             system("cls");
-            guardarVenta();
+            clienteArchivo.guardarCliente();
             break;
         case 3:
             system("cls");

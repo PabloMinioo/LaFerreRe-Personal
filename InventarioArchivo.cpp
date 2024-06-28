@@ -158,8 +158,13 @@ void InventarioArchivo::modificarPrecioUnitario() {
         cin >> nuevoPrecioUnitario;
         producto.setPrecioUnitario(nuevoPrecioUnitario);
         if (nuevoPrecioUnitario > 0) {
+<<<<<<< HEAD
+            cout << "EL PRECIO UNITARIO SE MODIFICO CON EXITO" << endl;
+            cout << "------------------------------------------" << endl;
+=======
             cout << "------------------------------------------" << endl;
             cout << "EL PRECIO UNITARIO SE MODIFICO CON EXITO" << endl;
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
             modificarRegistro(index, producto);
             producto.mostrarProducto(producto);
         } else {

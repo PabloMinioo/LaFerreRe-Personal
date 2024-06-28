@@ -61,7 +61,7 @@ void ClientesArchivo::listarClienteID() {
         cliente.mostrarCliente(cliente);
         cout << "**************************" << endl;
     } else {
-        cout << "EL PRODUCTO NO EXISTE" << endl;
+        cout << "EL CLIENTE NO EXISTE" << endl;
     }
 }
 // SE INDICA EL ID DEL CLIENTE Y SE REALIZA UNA BAJA LOGICA

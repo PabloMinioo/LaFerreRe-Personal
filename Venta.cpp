@@ -94,6 +94,11 @@ Venta Venta::cargarVenta() {
     // DECLARAMOS LAS VARIABLES QUE VAMOS A UTILIZAR
     int idVenta, idCliente, tipoVenta, formaPago, agregarProducto;
     float precioTotal = 0.0;
+<<<<<<< HEAD
+    const float descuento = 0.10; // DESCUENTO DE PAGA EN EFECTIVO
+    const float costoEnvio = 1.20; // AUMENTO DE PRECIO POR ENVIO
+=======
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
 
     // CARGAMOS LOS DATOS DEL CLIENTE
     // LISTAMOS LOS DATOS DE TODOS LOS CLIENTES
@@ -131,19 +136,39 @@ Venta Venta::cargarVenta() {
         cout << "DESEA AGREGAR OTRO PRODUCTO? (1-SI || 2-NO): ";
         cin >> agregarProducto;
         cout << "--------------------------------------" << endl;
+<<<<<<< HEAD
+    } while (agregarProducto != 2);
+=======
     } while (agregarProducto != 0);
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
 
     // CARGAMOS LA FECHA DE VENTA
     cout << "INGRESE LA FECHA DE VENTA" << endl;
     fechaVenta.cargarFecha();
 
+<<<<<<< HEAD
+    // APLICAMOS UN DESCUENTO DEL 10% SI SE PAGO EN 'Efectivo'
+    if (formaPago == 3){
+        precioTotal = precioTotal * (1- descuento);
+    }
+
+    // APLICAMOS UN AUMENTO DEL 20% SI EL TIPO DE VENTA ES 'Envio'
+    if (tipoVenta == 2){
+        precioTotal = precioTotal * costoEnvio;
+    }
+=======
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
     // DEVOLVEMOS EL OBJETO
     return Venta(idVenta, tipoVenta, formaPago, precioTotal, idCliente, fechaVenta, true);
 }
 
 void Venta::mostrarVenta(Venta venta) {
     cout << "ID DE LA VENTA: " << venta.getIdVenta() << endl;
-    cout << "TIPO DE VENTA: " << (venta.getTipoVenta() ? "LOCAL" : "ENVIO") << endl;
+    if (venta.getTipoVenta() == 1){
+        cout << "TIPO DE VENTA: LOCAL" << endl;
+    } else {
+        cout << "TIPO DE VENTA: ENVIO" << endl;
+    }
     cout << "FORMA DE PAGO: ";
     if (venta.getFormaPago() == 1) {
         cout << "DEBITO" << endl;

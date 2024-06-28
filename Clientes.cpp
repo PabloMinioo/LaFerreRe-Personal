@@ -4,6 +4,7 @@
 #include <cstring>
 #include "Venta.h"
 #include "Clientes.h"
+#include "ClientesArchivo.h"
 
 using namespace std;
 
@@ -83,13 +84,24 @@ bool Clientes::getEstado() {
 
 // METODOS
 Clientes Clientes::crearCliente(){
+<<<<<<< HEAD
+    // UTILIZAMOS EL OBJETO 'ClienteArchivo'
+    ClientesArchivo clienteArchivo;
+=======
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
     // DECLARAMOS LAS VARIABLES QUE VAMOS A UTILIZAR
     int idCliente, telefonoCliente;
     string nombreCliente, apellidoCliente, direccionCliente;
 
+<<<<<<< HEAD
+    // NUMERO ID DEL CLIENTE AUTONUMERICO
+    idCliente = clienteArchivo.getCantidadRegistros() + 1;
+    cout << "NUMERO ID DEL CLIENTE: " << idCliente << endl;
+=======
     // INGRESAMOS EL NUMERO ID DEL CLIENTE
     cout << "INGRESE EL ID DEL CLIENTE: ";
     cin >> idCliente;
+>>>>>>> 8c44adb45899e486dcb3be4a5609453bcfde2feb
 
     // INGRESAMOS EL NOMBRE DEL CLIENTE
     cout << "INGRESE EL NOMBRE DEL CLIENTE: ";
